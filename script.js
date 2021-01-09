@@ -1,12 +1,12 @@
-// Assignment code here\
-
-//charcter variables
+//password variable
 var passwordItems = []
 
+//eventListener waiting for click
 document.getElementById("generate").addEventListener("click", generatePassword);
 
 function generatePassword() {
   
+  //clears last password from pallette
   password = []
 
   //password variable selection prompts
@@ -19,6 +19,7 @@ function generatePassword() {
       return generatePassword();
   }
 
+  //character selection prompts
   var specialChar = confirm("Would you like special characters?");
   if (specialChar == true) {
     passwordItems.push("!", "@", "#", "$", "%", "&", "*", "?");
@@ -39,12 +40,11 @@ function generatePassword() {
     passwordItems.push("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
   }
 
+  //cancels function to start over
   if (passwordItems === undefined || passwordItems.length == 0) {
     window.alert("Please make one selection!")
     return;
   }
-
-  console.log(passwordItems);
 
   //converting the password to a string and making the password random
   for(var i = 0; i <= passLength; i ++){
@@ -54,9 +54,7 @@ function generatePassword() {
     
   }
 
-  console.log(password);
-  
+  //Inputs Password into textbox
   document.getElementById("password").innerText = password.replace("[object HTMLTextAreaElement]", "");
-  
 }
 
