@@ -2,18 +2,21 @@
 
 //charcter variables
 var passwordItems = []
-var password = []
 
-document.getElementById("generate").addEventListener("click", promptUser);
+document.getElementById("generate").addEventListener("click", generatePassword);
 
-function promptUser() {
+function generatePassword() {
+  
+  password = []
+
+  //password variable selection prompts
   var passLength = prompt("Enter a length between 8 and 128");
-  if (passLength <= 8) {
+  if (passLength <= 7) {
     window.alert("Please enter a number higher than 8!");
-    return promptUser();}
-    else if (passLength >= 128) {
+    return generatePassword();}
+    else if (passLength >= 129) {
       window.alert("Please enter a number lower than 128!");
-      return promptUser();
+      return generatePassword();
   }
 
   var specialChar = confirm("Would you like special characters?");
@@ -43,31 +46,17 @@ function promptUser() {
 
   console.log(passwordItems);
 
+  //converting the password to a string and making the password random
   for(var i = 0; i <= passLength; i ++){
     var values = passwordItems.join("");
     console.log(values)
     password = password + values.charAt(Math.floor(Math.random() * Math.floor(values.length - 1)));
+    
   }
 
   console.log(password);
+  
+  document.getElementById("password").innerText = password.replace("[object HTMLTextAreaElement]", "");
+  
 }
 
-
-
-//create for loop to choose password characters
-
-
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
