@@ -49,7 +49,6 @@ function generatePassword() {
   //converting the password to a string and making the password random
   for(var i = 0; i <= passLength; i ++){
     var values = passwordItems.join("");
-    console.log(values)
     password = password + values.charAt(Math.floor(Math.random() * Math.floor(values.length - 1)));
     
   }
